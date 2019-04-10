@@ -1,0 +1,55 @@
+{
+  "msg": "项目详情",
+  "data": {
+    "code": "0",
+    "type": 1,
+    "name": "项目一",
+    "period": 1,
+    "progress": 37,
+    "children": [{
+        "code": "11",
+        "name": "计划一",
+        "type": 2,
+        "period": 1,
+        "progress": 37,
+        "children": []
+      },
+      {
+        "code": "12",
+        "name": "计划二",
+        "type": 1,
+        "progress": 35,
+        "children": [{
+            "name": "计划二1",
+            "code": "121",
+            "type": 2,
+            "period": 1,
+            "progress": 71,
+            "children": []
+          },
+          {
+            "name": "计划二2",
+            "code": "122",
+            "type": 2,
+            "period": 1,
+            "progress": 34,
+            "children": []
+          }
+        ]
+      },
+      {
+        "code": "13",
+        "name": "计划三",
+        "type": 1,
+        "progress": 0,
+        "children": [{
+          "code": "131",
+          "name": "计划三1",
+          "type": 1,
+          "progress": 0,
+          "children": []
+        }]
+      }
+    ]
+  }
+}
