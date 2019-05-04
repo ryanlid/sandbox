@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>设备方向示例 device orientation demo</title>
+    <link href="https://lidong.me/sandbox/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>设备方向示例 device orientation demo</h1>
+    </header>
+    <main>
+      <h3>相关事件</h3>
+      <p>
+        <code>deviceorientation</code>
+      </p>
+      <div class="tiy">
+        <p>TIY:</p>
+        <div>
+          <div>
+            <div id="Gamma"></div>
+            <div id="Beta"></div>
+            <div id="Alpha"></div>
+          </div>
+          <img
+            src="https://static.oonnnoo.com/upload/dlVXh_rgA.png"
+            width="300"
+            alt="滑稽"
+          />
+        </div>
+      </div>
+    </main>
+    <script>
+      window.addEventListener("deviceorientation", e => {
+        document.getElementById("Gamma").innerHTML = `Gamma: ${e.gamma}`;
+        document.getElementById("Beta").innerHTML = `Beta: ${e.beta}`;
+        document.getElementById("Alpha").innerHTML = `Alpha: ${e.alpha}`;
+        console.log("Gamma: ", e.gamma);
+        console.log("Beta: ", e.beta);
+        console.log("Alpha: ", e.alpha);
+      });
+
+      let logo = document.querySelector("img");
+      window.addEventListener("deviceorientation", e => {
+        let tiltLR = e.gamma;
+        let tiltFB = e.beta;
+        logo.style.transform = `rotate(${tiltLR}deg) rotate3d(1,0,0,${tiltFB *
+          -1}deg)`;
+      });
+    </script>
+  </body>
+</html>

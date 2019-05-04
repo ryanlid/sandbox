@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>剪切板示例 clipboard demo</title>
+    <link href="https://lidong.me/sandbox/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>剪切板示例 clipboard demo</h1>
+    </header>
+    <main>
+      <h3>相关属性</h3>
+
+      <h3>相关事件</h3>
+      <p>
+        <code>
+          copy
+        </code>
+      </p>
+      <p>
+        <code>
+          cut
+        </code>
+      </p>
+      <p>
+        <code>
+          paste
+        </code>
+      </p>
+
+      <h3>相关方法</h3>
+      <p>
+        <code>document.execCommand('copy')</code>
+      </p>
+      <div class="tiy">
+        <p>TIY:</p>
+        <p>点击复制按钮，即可复制 input 输入框的内容</p>
+        <p>
+          （由于安全问题）execCommand('paste') 无效，需要使用 ctrl+v 或
+          command+v 来触发 paste 事件
+        </p>
+        <p><input type="text" value="content" id="input1" /></p>
+        <p><input type="text" placeholder="粘贴到这里" id="input2" /></p>
+        <p><button id="copyBtn">复制</button></p>
+      </div>
+    </main>
+    <script>
+      // clipboard
+      // 1. user interaction is required
+      let copyBtn = document.querySelector("#copyBtn");
+      let pasteBtn = document.querySelector("#pasteBtn");
+      copyBtn.addEventListener("click", () => {
+        select();
+        copy();
+      });
+
+      // 2.programmatically select an element
+
+      function select() {
+        let input1 = document.querySelector("#input1");
+        input1.focus();
+        input1.setSelectionRange(0, input1.value.length);
+      }
+
+      // 3. copy select element text
+      function copy() {
+        try {
+          document.execCommand("copy");
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      document.addEventListener("copy", e => {
+        console.log(e.target.value);
+      });
+      document.addEventListener("cut", e => {
+        console.log(e.target.value);
+      });
+      document.addEventListener("paste", e => {
+        let text = e.clipboardData.getData("text/plain");
+        console.log(text);
+        document.querySelector("#input2").value = text;
+      });
+    </script>
+  </body>
+</html>

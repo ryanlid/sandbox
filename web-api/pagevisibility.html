@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>页面可见行示例 Page Visibility</title>
+    <link href="https://lidong.me/sandbox/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>页面可见行示例 Page Visibility</h1>
+    </header>
+    <main>
+      <h3>相关属性</h3>
+      <p>
+        <code>document.hidden</code>
+      </p>
+      <p>
+        <code>document.visibilityState</code>
+      </p>
+      <h3>相关事件</h3>
+      <p>
+        <code>visibilitychange</code>
+      </p>
+      <div class="tiy">
+        TIY: 切换标签，查看标签页上标题
+      </div>
+    </main>
+    <script>
+      window.addEventListener("visibilitychange", () => {
+        switch (document.visibilityState) {
+          case "prerender":
+            console.log("Tab is pre-rendering");
+            document.title = "Tab is pre-rendering";
+            break;
+          case "hidden":
+            console.log("Tab is hidden");
+            document.title = "Tab is hidden";
+            break;
+          case "visible":
+            console.log("Tab is visible");
+            document.title = "Tab is visible";
+            break;
+          default:
+            document.title = "emmm...";
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

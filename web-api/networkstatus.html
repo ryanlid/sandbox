@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>网络状态检测</title>
+    <link href="https://lidong.me/sandbox/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>网络状态检测</h1>
+    </header>
+    <main>
+      <div>网络状态: <span id="output"></span></div>
+      <div>
+        <p>通过 navigator.onLine 网络状态</p>
+        <p>通过监听 online, offline 事件，获取网络状态</p>
+      </div>
+      <div class="tiy">
+        TIY: 切换设备上网络（Wi-Fi，数据流量，网线），查看页面上的网络状态显示
+      </div>
+    </main>
+
+    <script>
+      // 待页面加载完毕，通过 navigator.onLine 网络状态
+      window.onload = function() {
+        var text = navigator.onLine ? "在线" : "离线";
+        document.getElementById("output").innerHTML = text;
+      };
+
+      // 通过监听 online,offline 事件，获取网络状态
+      window.addEventListener("online", networkStatus);
+      window.addEventListener("offline", networkStatus);
+      function networkStatus(e) {
+        console.log(e.type);
+        var text;
+        switch (e.type) {
+          case "online":
+            text = "在线";
+            break;
+          case "offline":
+            text = "离线";
+            break;
+        }
+        document.getElementById("output").innerHTML = text;
+      }
+    </script>
+  </body>
+</html>
