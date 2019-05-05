@@ -14,7 +14,9 @@
   padding: 20px;
   color: #000000;
   font-size: 15px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", AppleSDGothicNeo-Medium, 'Segoe UI', 'Malgun Gothic', Verdana, Tahoma, sans-serif;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
+    AppleSDGothicNeo-Medium, "Segoe UI", "Malgun Gothic", Verdana, Tahoma,
+    sans-serif;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
@@ -40,8 +42,8 @@
   border: 1px solid #e6e6e6;
 }
 
-.github pre>code {
-  font-size: .9em;
+.github pre > code {
+  font-size: 0.9em;
   font-family: Consolas, Inconsolata, Courier, monospace;
 }
 
@@ -62,4 +64,10 @@
 
 .github table tr:nth-child(2n) {
   background-color: #f2f2f2;
+}
+
+.link-list li {
+  line-height: 1.5;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
