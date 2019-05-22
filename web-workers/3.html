@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>线程嵌套-单层嵌套</title>
+  </head>
+  <body>
+    <h1>线程嵌套-单层嵌套</h1>
+    <table id="table"></table>
+    <script>
+      // var intArray = new Array(100);
+      // var intStr = "";
+      // for (var i = 0; i < 100; i++) {
+      //   intArray[i] = parseInt(Math.random() * 100);
+      //   if (i != 0) {
+      //     intStr += ";";
+      //   }
+      //   intStr += intArray[i];
+      // }
+      var worker = new Worker("3.js");
+      worker.postMessage("");
+      // 从线程中取得计算结果
+      worker.onmessage = function(event) {
+        if (event.data != "") {
+          // 行号
+          var j;
+          // 列号
+          var k;
+          var tr;
+          var td;
+          var intArray = event.data.split(";");
+          var table = document.getElementById("table");
+          for (var i = 0; i < intArray.length; i++) {
+            j = parseInt(i / 10, 0);
+            k = i % 10;
+            if (k == 0) {
+              // 该行不存在添加行
+              tr = document.createElement("tr");
+              tr.id = "tr" + j;
+              table.appendChild(tr);
+            } else {
+              // 该行已存在，获取该行
+              tr = document.getElementById("tr" + j);
+            }
+            td = document.createElement("td");
+            tr.appendChild(td);
+            // 设置列内容
+            td.innerHTML = intArray[j * 10 + k];
+            // 设置背景色
+            td.style.backgroundColor = "blue";
+            // 设置字体颜色
+            td.style.color = "white";
+            // 设置列宽
+            td.width = "30";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
