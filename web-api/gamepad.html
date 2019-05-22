@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>设备光线传感器示例 device orientation</title>
+  </head>
+  <body>
+    <header>
+      <h1>设备光线传感器示例 device orientation</h1>
+    </header>
+    <main>
+      <h3>相关属性</h3>
+
+      <h3>相关事件</h3>
+
+      <h3>相关方法</h3>
+      <p>
+        <code>navigator.vibrate(1000);</code>
+      </p>
+      <p>
+        <code>navigator.vibrate([1000, 300, 300, 200]);</code>
+      </p>
+      <div class="tiy">
+        <p>TIY:</p>
+        <p>
+          <button id="btn1">
+            震动1s
+          </button>
+        </p>
+        <p>
+          <button id="btn2">
+            震动1s，停顿0.3s， 震动0.3s，停顿0.2s
+          </button>
+        </p>
+        <p>
+          <button id="btn3">
+            停止震动
+          </button>
+        </p>
+      </div>
+    </main>
+    <script>
+      window.addEventListener("devicelight", e => {
+        alert(`${e.value} lux`);
+        console.log(`${e.value} lux`);
+      });
+    </script>
+  </body>
+</html>
