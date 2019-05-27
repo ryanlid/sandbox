@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>resizable table</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      table {
+        border-collapse: collapse;
+        width: auto;
+        font-family: sans-serif;
+      }
+      td,
+      th {
+        padding: 5px 15px;
+        text-align: left;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+      }
+      .column-selector:hover {
+        border-right: 2px solid #0000ff;
+        background: #0000ff;
+      }
+    </style>
+
+    <table id="tableId">
+      <caption>
+        Files List
+      </caption>
+
+      <colgroup>
+        <col class="column1" />
+        <col class="columns2plus3" span="2" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>Size</th>
+          <th>File</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>10Mb</td>
+          <td>C:\Users\ryan\Desktop\test\abc.txt</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var tables = document.getElementsByTagName("table");
+      for (var i = 0; i < tables.length; i++) {
+        resizableGrid(tables[i]);
+      }
+      function resizableGrid(table) {
+        var row = table.getElementsByTagName("tr")[0];
+        var cols = row ? row.children : undefined;
+        if (!cols) return;
+        for (var i = 0; i < cols.length; i++) {
+          var div = createDiv(table.offsetHeight);
+          cols[i].appendChild(div);
+          cols[i].style.position = "relative";
+          setListeners(div);
+        }
+      }
+
+      function createDiv(height) {
+        var div = document.createElement("div");
+        div.style.top = 0;
+        div.style.right = 0;
+        div.style.width = "2px";
+        div.style.position = "absolute";
+        div.style.cursor = "col-resize";
+        // div.style.backgroundColor = "red";
+        div.style.userSelect = "none";
+        div.style.height = height + "px";
+        div.className = "column-selector";
+        return div;
+      }
+
+      function setListeners(div) {
+        var pageX, curCol, nextCol, curColWidth, nextColWidth;
+        div.addEventListener("mousedown", function(e) {
+          curCol = e.target.parentElement;
+          nextCol = curCol.nextElementSibling;
+          pageX = e.pageX;
+
+          curColWidth = curCol.offsetWidth;
+          if (nextCol) {
+            nextColWidth = nextCol.offsetWidth;
+          }
+        });
+
+        document.addEventListener("mousemove", function(e) {
+          if (curCol) {
+            console.log("curCol", curColWidth);
+
+            var diffX = e.pageX - pageX;
+            console.log("diffX", diffX);
+            if (nextCol && diffX > 0) {
+              console.log("nextCol", nextColWidth);
+              nextCol.style.width = nextColWidth - diffX + "px";
+            }
+            curCol.style.width = curColWidth + diffX + "px";
+          }
+        });
+
+        document.addEventListener("mouseup", function(e) {
+          curCol = undefined;
+          nextCol = undefined;
+          pageX = undefined;
+          nextColWidth = undefined;
+          curColWidth = undefined;
+        });
+      }
+    </script>
+
+    <!--The follow script is unnecessary -->
+    <script src="https://static.oonnnoo.com/utils/0.2.0/utils.min.js"></script>
+    <script>
+      utils.showGithubRibbons("https://github.com/ryanlid/sandbox");
+      utils.showReferenceLink([
+        {
+          word: "javascript 实现 table 表格拖动改变列宽",
+          link: "https://lidong.me/blog/resizable-table/"
+        },
+        {
+          word: "Creating resizable table grid with JavaScript",
+          link:
+            "https://www.brainbell.com/javascript/making-resizable-table-js.html"
+        }
+      ]);
+    </script>
+  </body>
+</html>
