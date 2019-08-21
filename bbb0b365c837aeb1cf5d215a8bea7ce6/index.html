@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test Suite</title>
+
+    <style>
+      #results li.pass {
+        color: green;
+      }
+      #results li.fail {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="results"></ul>
+    <script>
+      // 创建一个assert方法
+      function assert(value, desc) {
+        var li = document.createElement("li");
+        li.className = value ? "pass" : "fail";
+        li.appendChild(document.createTextNode(desc));
+        document.getElementById("results").appendChild(li);
+      }
+
+      function report(text) {
+        assert(true, text);
+      }
+
+      window.onload = function() {
+        // 通过断言执行测试用例
+        assert(true, "The test suite is running.");
+        assert(false, "Fail!");
+        console.assert(true, "The test suite is running.");
+        console.assert(false, "Fail!");
+      };
+    </script>
+
+    <!--The follow script is unnecessary -->
+    <script src="https://static.oonnnoo.com/utils/0.2.0/utils.min.js"></script>
+    <script>
+      utils.showGithubRibbons("bbb0b365c837aeb1cf5d215a8bea7ce6");
+    </script>
+  </body>
+</html>
