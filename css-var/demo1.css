@@ -1,0 +1,16 @@
+/*
+:root{
+  --text-color:black;
+  --bg-color:white;
+}
+*/
+
+:root {
+  --xs-text-color: blueviolet;
+  --xs-text-size: 16px;
+}
+
+body {
+  color: var(--text-color, #000000);
+  background: var(--bg-color, white);
+}
