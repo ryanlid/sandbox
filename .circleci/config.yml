@@ -7,10 +7,26 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gitlfs-{{ .Branch }}
+            - gitlfs-master
       - run:
-          name: Update System
+          name: Install rsync && Git LFS
           command: |
-            sudo apt-get update && sudo apt-get install rsync
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+            apt-get update
+            apt-get install -y git-lfs rsync
+            git lfs install
+            mkdir -p ~/.ssh
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+            ssh git@github.com git-lfs-authenticate "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}" download
+            git lfs pull
+
+      - save_cache:
+          key: gitlfs-{{ .Branch }}
+          paths:
+            - .git/lfs
 
       - deploy:
           name: Deploy via ssh
