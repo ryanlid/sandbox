@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>相册</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="grallery" class="grallery">
+      <h1>相册</h1>
+      <ul>
+        <li class="gallery-item">
+          <img
+            src="https://cdn.pixabay.com/photo/2020/05/23/04/11/transport-5207942_960_720.jpg"
+            title="飞机"
+            alt="飞机"
+          />
+          <div>飞机</div>
+        </li>
+        <li class="gallery-item">
+          <img
+            src="https://cdn.pixabay.com/photo/2019/11/14/19/41/baku-eye-4626961_960_720.jpg"
+            title="摩天轮"
+            alt="摩天轮"
+          />
+          <div>摩天轮</div>
+        </li>
+        <li class="gallery-item">
+          <img
+            src="https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_960_720.jpg"
+            title="海边"
+            alt="海边"
+          />
+          <div>海边</div>
+        </li>
+        <li class="gallery-item">
+          <img
+            src="https://cdn.pixabay.com/photo/2020/05/26/10/41/sunset-5222626_960_720.jpg"
+            title="日落"
+            alt="日落"
+          />
+          <div>日落</div>
+        </li>
+      </ul>
+    </div>
+    <div class="mask" id="mask">
+      <div class="mask-backdrop">
+        <img src="" alt="" class="ma5-clone" id="photo" />
+      </div>
+      <div class="mask-close">
+        <span
+          class="mask-icon-close mask-icon fas fa-window-close fa-2x"
+        ></span>
+      </div>
+      <div class="mask-prev">
+        <i class="mask-icon fas fa-angle-left fa-3x"></i>
+        <!-- <span class="mask-icon-left angle-left">left</span> -->
+      </div>
+      <div class="mask-next">
+        <i class="mask-icon fas fa-angle-right fa-3x"></i>
+        <!-- <span class="mask-icon-right">right</span> -->
+      </div>
+      <div class="mask-figcaption">
+        <i class="mask-icon fas fa-info-circle fa-2x"></i>
+        <!-- <span class="mask-icon-info">info</span> -->
+        <span id="figcaption"></span>
+      </div>
+    </div>
+    <script src="gallery.js"></script>
+  </body>
+</html>

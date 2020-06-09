@@ -1,0 +1,115 @@
+.gallery {
+  width: 1200px;
+  margin: 10px auto;
+}
+
+.gallery ul {
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.gallery-item {
+  float: left;
+  position: relative;
+  width: 375px;
+  height: 200px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #626262;
+  cursor: pointer;
+  overflow: hidden;
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-item div {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+}
+.gallery-item li::after {
+  position: absolute;
+  bottom: 0.5rem;
+}
+
+.mask {
+  display: none;
+}
+
+.mask .mask-backdrop {
+  background-color: black;
+  transition: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow:auto;
+}
+
+.mask-backdrop img {
+  position: absolute;
+  width: 82%;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mask-close {
+  position: absolute;
+  right: 3rem;
+  top: 1rem;
+}
+.mask-prev {
+  position: absolute;
+  top: 50%;
+  left: 3rem;
+}
+.mask-next {
+  position: absolute;
+  top: 50%;
+  right: 3rem;
+}
+.mask-figcaption {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.mask-figcaption span {
+  font-size: 1.5rem;
+  color: #fff;
+  padding-left: 1.5rem;
+}
+
+.mask-icon{
+  color: #fff;
+}
+
+/* @font-face {
+  font-family: Arial, Helvetica, sans-serif;
+  src: url() format('woff');
+}
+
+[class*='mask-icon-']::before,
+[class^='mask-icon-']::before {
+  position: absolute;
+  top: 0.1rem;
+} */
